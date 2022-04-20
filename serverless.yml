@@ -4,17 +4,23 @@ provider:
   name: aws
   runtime: python3.7
   memorySize: 128
-  stage: dev
+  stage: ${opt:stage}
   # profile: 'some-local-aws-config-profile'
   # region: us-east-1
-
+  stackTags:
+    Environment: ${opt:stage}
+    Project: ${self:service}
+    IM: Serverless
+    Team: devops
+    Company: ReSci
+    CostCenter: ${ssm:/${opt:stage}/${self:service}/COST_CENTER}
   environment:
     SERVICE: ${self:service}
     STAGE: '/${self:provider.stage}'
-    BUCKET: ${opt:bucket, 'elasticpypi'}             # CHANGE ME
-    TABLE: ${opt:table, 'elasticpypi'}
+    BUCKET: ${opt:bucket, 'rs-${opt:stage}-${self:service}'}
+    TABLE: ${opt:table, '${opt:stage}-${self:service}'}
     USERNAME: ${opt:username, 'elasticpypi'}
-    PASSWORD: ${opt:password, 'something-secretive'}   # CHANGE ME
+    PASSWORD: ${ssm:/${opt:stage}/${self:service}/PASSWORD~true}
     OVERWRITE: false
 
 plugins:
