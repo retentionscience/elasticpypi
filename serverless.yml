@@ -149,7 +149,7 @@ resources:
           WriteCapacityUnits: 1
     DynamoDBIamPolicy:
       Type: AWS::IAM::Policy
-      DependsOn: packagesTable
+      DependsOn: [packagesTable]
       Properties:
         PolicyName: ${self:service}-lambda-dynamodb
         PolicyDocument:
@@ -203,7 +203,7 @@ resources:
         Path: /
     ApiGatewayS3IamPolicy:
       Type: AWS::IAM::Policy
-      DependsOn: ApiGatewayS3IamRoleExecution
+      DependsOn: [ApiGatewayS3IamRoleExecution]
       Properties:
         PolicyName: ${self:service}-api_gateway-s3
         PolicyDocument:
@@ -229,7 +229,7 @@ resources:
           Ref: ApiGatewayRestApi
     PackagesName:
       Type: AWS::ApiGateway::Resource
-      DependsOn: Packages
+      DependsOn: [Packages]
       Properties:
         ParentId:
           Ref: Packages
