@@ -2,19 +2,24 @@ name: Deploy
 
 on:
   push:
+    branches:
+      - master
 
 jobs:
   deploy:
     name: Deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+
     steps:
       - uses: actions/checkout@master
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
       - name: Install serverless
         run: npm install
+
       - name: serverless deploy to environment
         run: ./node_modules/serverless/bin/serverless.js deploy -s common
         env:
