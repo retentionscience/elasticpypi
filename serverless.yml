@@ -7,7 +7,7 @@ provider:
   stage: ${opt:stage}
   # profile: 'some-local-aws-config-profile'
   # region: us-east-1
-  cfnRole: arn:aws:iam::362213751741:role/tf-${self:custom.service}-${self:custom.stage}-admin
+  cfnRole: arn:aws:iam::362213751741:role/tf-${self:service}-${opt:stage}-admin
   stackTags:
     Environment: ${opt:stage}
     Project: ${self:service}
