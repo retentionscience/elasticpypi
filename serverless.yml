@@ -8,7 +8,7 @@ provider:
   # profile: 'some-local-aws-config-profile'
   # region: us-east-1
   cfnRole: arn:aws:iam::362213751741:role/tf-${self:service}-${opt:stage}-admin
-    role:
+  role:
     Fn::ImportValue: tf-${self:custom.service}-${self:custom.stage}-LambdaExecutionRoleArn
   stackTags:
     Environment: ${opt:stage}
