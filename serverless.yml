@@ -9,6 +9,7 @@ provider:
   lambdaHashingVersion: 20201221
   # profile: 'some-local-aws-config-profile'
   region: us-east-1
+  deploymentBucket: rs-aws-lambda-functions
   stackTags:
     Environment: ${opt:stage}
     Project: ${self:service}
