@@ -23,7 +23,7 @@ provider:
     BUCKET: ${opt:bucket, 'rs-${opt:stage}-${self:service}'}
     TABLE: ${opt:table, '${opt:stage}-${self:service}'}
     USERNAME: ${opt:username, 'elasticpypi'}
-    PASSWORD: ${ssm:/${opt:stage}/${self:service}/PASSWORD}
+    PASSWORD: ${ssm:/${opt:stage}/${self:service}/PYPI_PASSWORD}
     OVERWRITE: false
 
 plugins:
