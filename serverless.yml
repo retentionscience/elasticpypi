@@ -3,7 +3,7 @@ variablesResolutionMode: 20210326
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
   memorySize: 128
   stage: ${opt:stage}
   lambdaHashingVersion: 20201221
